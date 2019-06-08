@@ -14,12 +14,22 @@ public class Article {
     private String type;
     @Column(columnDefinition = "longtext")
     private String content;
+    @Column(columnDefinition = "longtext",name = "content_md")
+    private String contentMd;
     @Column
     private int authorId;
     @Column(name = "create_time")
     private long createTime;
     @Column(name = "modify_time")
     private long modifyTime;
+
+    public String getContentMd() {
+        return contentMd;
+    }
+
+    public void setContentMd(String contentMd) {
+        this.contentMd = contentMd;
+    }
 
     public long getCreateTime() {
         return createTime;

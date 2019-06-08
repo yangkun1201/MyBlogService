@@ -34,4 +34,28 @@ public class ArticleController {
         return result;
     }
 
+    @GetMapping("getArticleById")
+    public Article getArticleById(@RequestParam("id") int id){
+        return articleRepository.findById(id).get();
+    }
+
+    @PostMapping("updateArticleById")
+    public Map<String,Object> updateArticleById(@RequestBody Article article){
+        articleRepository.updateArticle(
+                article.getTitle(), article.getType(),article.getContent(),
+                article.getContentMd(),article.getId());
+        Map<String,Object> result = new HashMap<>();
+        result.put("status","ok");
+        return result;
+    }
+
+    @GetMapping("deleteArticleById")
+    public Map<String,Object> deleteArticleById(@RequestParam("id") int id){
+        articleRepository.deleteById(id);
+        Map<String,Object> result = new HashMap<>();
+        result.put("status","ok");
+        return result;
+    }
+
+
 }
